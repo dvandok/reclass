@@ -113,10 +113,7 @@ class DictPath(object):
         return string.replace(self._delim, '\\' + self._delim)
 
     def new_subpath(self, key):
-        try:
-            return DictPath(self._delim, self._parts + [self._escape_string(key)])
-        except AttributeError as e:
-            return DictPath(self._delim, self._parts + [key])
+        return DictPath(self._delim, self._parts + [key])
 
     def get_value(self, base):
         return self._get_innermost_container(base)[self._get_key()]
